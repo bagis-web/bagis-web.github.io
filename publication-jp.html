@@ -102,22 +102,62 @@
 						<div class="row">
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h2>学術雑誌等（紀要・論文集等を含む）</h2>
+								<div v-if="journal_entries.length == 0">(To appear.)</div>
+								<div v-else>
+									<table class="table table-borderless text-left">
+										<tr v-for="entry in journal_entries">
+											<td>
+												{{entry.bibtext}}
+											</td>
+										</tr>
+									</table>
+								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h2>国際会議における発表</h2>
+								<div v-if="intproc_entries.length == 0">(To appear.)</div>
+								<div v-else>
+									<table class="table table-borderless text-left">
+										<tr v-for="entry in intproc_entries">
+											<td>
+												{{entry.bibtext}}
+											</td>
+										</tr>
+									</table>
+								</div>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h2>国内学会・シンポジウム等における発表</h2>
+								<div v-if="domproc_entries.length == 0">(To appear.)</div>
+								<div v-else>
+									<table class="table table-borderless text-left">
+										<tr v-for="entry in domproc_entries">
+											<td>
+												{{entry.bibtext}}
+											</td>
+										</tr>
+									</table>
+								</div>
 							</div>
 						</div>					
 						<div class="row">
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h2>その他の発表</h2>
+								<div v-if="other_entries.length == 0">(To appear.)</div>
+								<div v-else>
+									<table class="table table-borderless text-left">
+										<tr v-for="entry in other_entries">
+											<td>
+												{{entry.bibtext}}
+											</td>
+										</tr>
+									</table>
+								</div>
 							</div>
 						</div>					
 
@@ -151,7 +191,7 @@
 	<script src="js/magnific-popup-options.js"></script>
 	<!-- Vue -->
 	<script>
-		var path = 'https://sheets.googleapis.com/v4/spreadsheets/1UC8wd_8qc1-LhYQDpr02Pi3Au_eeRYme72G7--oStfI/values/sheet1?key=AIzaSyDLaaPfcDOTmc1RhziA8Q7xpP8P8Os2rIo'
+		var path = 'https://sheets.googleapis.com/v4/spreadsheets/1N5xLr9yvHBeOLF83dgtwe66G9GGbJwM2Q_pApKE-ruo/values/sheet1?key=AIzaSyDLaaPfcDOTmc1RhziA8Q7xpP8P8Os2rIo'
 		new Vue({
 			el: '#app',
 			data() {
@@ -160,6 +200,10 @@
 					errored: false,
 					error: null,
 					entries: null,
+					journal_entries:null,
+					intproc_entries:null,
+					domproc_entries:null,
+					other_entries:null,
 				}
 			},
 			created() {
@@ -169,42 +213,107 @@
 
 						var entries = [];
 
-						response.data.values.forEach(function(value){
+						var journal_entries = [];
+						var intproc_entries = [];
+						var domproc_entries = [];
+						var other_entries   = [];
 
+						response.data.values.forEach(function(value){
+							var Types = {
+								journal : 1,
+								int_proc : 2,
+								dom_proc : 3,
+								others : 4
+							};
 							var entry = {
-								index:null,
-								name_en:null,
-								name_jp:null,
-								affiliaton_en:null,
-								affiliaton_jp:null,
-								position_en:null,
-								position_jp:null,
-								photo:null,
+								type:null,
+								bibtext:null,
+								reviewed:null,
+								inc_gradstudent:null,
+								inc_phds:null,
+								co_thailand:null,
+								co_turkey:null,
+								co_malaysia:null,
+								co_vietnam:null,
+								co_cambodia:null,
+								co_philippines:null,
+								co_indonesia:null,								
 								url:null,
 							};
-							console.log(value)
 							// コメント行の読み飛ばし
-							if (value[0].startsWith('#')) return;
-							else if(value[0].toLowerCase()!='true') return;
+							if(value.length == 0) return;
+							else if (value[0].startsWith('#')) return;
+							else if(value[1].toLowerCase()!='true') return;
 
-							var idx = 0;
-							entry.index = value[1]
-							entry.name_en = value[2]
-							entry.name_jp = value[3]
-							entry.affiliaton_en = value[4]
-							entry.affiliaton_jp = value[5]
-							entry.position_en = value[6]
-							entry.position_jp = value[7]
-							entry.photo = value[8]
-							entry.url = value[9]
+							var idx = 2;
+							switch(value[idx++])
+							{
+								case '学術雑誌':
+									entry.type = Types.journal;
+									break;
+								case '国際会議':
+									entry.type = Types.int_proc;
+									break;
+								case '国内学会':
+									entry.type = Types.dom_proc;
+									break;
+								case 'その他':
+									entry.type = Types.others;
+									break;
+							}
+							entry.bibtext = value[idx++];
+							if(value[idx++] == '有')
+							{
+								entry.reviewed = true;
+							}
+							else entry.reviewed = false;
 
-							entries.push(entry)
+							if(value[idx++].toLowerCase()!='true') entry.inc_gradstudent = true;
+							else entry.inc_gradstudent = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.inc_phds = true;
+							else entry.inc_phds = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_thailand = true;
+							else entry.co_thailand = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_turkey = true;
+							else entry.co_turkey = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_malaysia = true;
+							else entry.co_malaysia = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_vietnam = true;
+							else entry.co_vietnam = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_cambodia= true;
+							else entry.co_cambodia = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_philippines = true;
+							else entry.co_philippines = false;
+
+							if(value[idx++].toLowerCase()!='true') entry.co_indonesia = true;
+							else entry.co_indonesia = false;
+
+							entry.url = value[idx++];
+
+							entries.push(entry);
+
+							if(entry.type == Types.journal) journal_entries.push(entry);
+							else if(entry.type == Types.int_proc) intproc_entries.push(entry);
+							else if(entry.type == Types.dom_proc) domproc_entries.push(entry);
+							else other_entries.push(entry);
+
 
 
 						});
 
-						console.log(entries);
 						vm.entries = entries;
+
+						vm.journal_entries = journal_entries;
+						vm.intproc_entries = intproc_entries;
+						vm.domproc_entries = domproc_entries;
+						vm.other_entries   = other_entries;
 
 
 					})

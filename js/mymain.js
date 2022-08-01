@@ -44,8 +44,12 @@ var getAllMembers = function(data)
         entry.country = value[++idx];
         entry.role = value[++idx];
         entry.is_core = toBoolean(value[++idx]);
+        
         entry.affiliaton_en = value[++idx];
         entry.affiliaton_jp = value[++idx];
+        // 所属の和名が無ければ英名で表記
+        if(entry.affiliaton_jp == undefined || entry.affiliaton_jp =='') entry.affiliaton_jp=entry.affiliaton_en;
+
         entry.position_en = value[++idx];
         entry.position_jp = value[++idx];
         entry.photo = value[++idx];
