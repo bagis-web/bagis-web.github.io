@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Cube by FreeHTML5.co
+	Twitter: http://twitter.com/gettemplateco
+	URL: http://freehtml5.co
+-->
+<html>
+
+	<html>
+		<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>グローバル感性イメージング科学技術​のアジア拠点形成​</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="Hiroyuki Kubo" />
+	
+		  <!-- Facebook and Twitter integration -->
+		<meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+	
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
+		
+		<!-- Animate.css -->
+		<link rel="stylesheet" href="css/animate.css">
+		<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="css/icomoon.css">
+		<!-- Themify Icons-->
+		<link rel="stylesheet" href="css/themify-icons.css">
+		<!-- Bootstrap  -->
+		<link rel="stylesheet" href="node_modules/bootstrap/scss/bootstrap.css">
+	
+		<!-- Vue.js -->
+		<script src="node_modules/vue/dist/vue.min.js"></script>
+		<script src="node_modules/axios/dist/axios.min.js"></script>
+	
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="css/magnific-popup.css">
+	
+		<!-- Owl Carousel  -->
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	
+		<!-- Theme style  -->
+		<link rel="stylesheet" href="css/style.css">
+	
+		<!-- Modernizr JS -->
+		<script src="js/modernizr-2.6.2.min.js"></script>
+		<!-- FOR IE9 below -->
+		<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+	
+	
+	</head>
+
+<body>
+
+	<div class="gtco-loader"></div>
+
+	<div id="page">
+		<div id="navi"></div>
+
+		<header id="gtco-header" class="gtco-cover gtco-cover-xs gtco-inner" role="banner">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-0 text-left">
+						<div class="display-t">
+							<div class="display-tc">
+								<div class="row">
+									<div class="col-md-8 animate-box">
+										<h1 class="no-margin">ベトナム社会主義共和国​</h1>
+										<h2 class="no-margin">Socialist Republic of Vietnam</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- END #gtco-header -->
+		<div id="app">
+			<p v-if="errored" v-cloak>{{ error }}</p>
+			<p v-if="loading" v-cloak>Loading...</p>
+			<div v-else>
+				<div class="gtco-section gtco-testimonial">
+					<div class="gtco-container">
+						<div class="row">
+							<div class="col-md-12 offset-md-0 gtco-heading text-center">
+								<h3>拠点機関</h3>
+								<table class="table table-borderless">
+									<tr v-for="entry in base_orgs">
+										<td>
+											<a v-bind:href="entry.url" target="_blank\">{{entry.name_jp}}</a>
+										</td>
+									</tr>
+								</table>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 offset-md-0 gtco-heading text-center">
+								<h3>協力機関</h3>
+								<table class="table table-borderless">
+									<tr v-for="entry in coop_orgs">
+										<td>
+											<a v-bind:href="entry.url" target="_blank\">{{entry.name_jp}}</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="gtco-section gtco-testimonial">
+					<div class="gtco-container">
+						<div class="row">
+							<div class="col-md-12 offset-md-0 gtco-heading text-center">
+								<h3>メンバー</h3>
+								<div class="row">
+									<div v-for="entry in members" class="col-md-6 col-6">
+										<div class="card committee">
+											<div class="row">
+												<div class="col-md-4 col-m1">
+													<img v-if="entry.image != undefined && entry.image != ''" v-bind:src="entry.image"
+														class="d-block w-100" />
+													<img v-else src="member/na.png" class="d-block w-100" />
+												</div>
+												<div class="col-md-8 col-m1">
+													<div class="card-block">
+														<h5 class="card-title">{{entry.name}}</h5>
+														<h5 class="card-title name-en">{{entry.name_jp}}</h5>
+														<p class="card-text">{{entry.affiliaton_jp}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- </div> -->
+	<!-- Footer -->
+	<div id="footer"></div>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+
+	<!-- mymain.js -->
+	<script src="js/mymain.js"></script>
+
+	<!-- Vue -->
+	<script>
+		var country_name = "ベトナム"
+		var member_path = 'https://sheets.googleapis.com/v4/spreadsheets/1UC8wd_8qc1-LhYQDpr02Pi3Au_eeRYme72G7--oStfI/values/sheet1?key=AIzaSyDLaaPfcDOTmc1RhziA8Q7xpP8P8Os2rIo'
+		var organization_path = 'https://sheets.googleapis.com/v4/spreadsheets/1ZjU9P71MPpiuDwJhWxmzT_Pam_NnT5xuJs8MQZuug-4/values/sheet1?key=AIzaSyDLaaPfcDOTmc1RhziA8Q7xpP8P8Os2rIo'
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					loading: true,
+					errored: false,
+					error: null,
+					entries: null,
+					
+					members:null,
+					base_orgs:null,
+					coop_orgs:null
+				}
+			},
+			created() {
+				let vm = this
+				
+				axios.all([axios.get(member_path), axios.get(organization_path)])
+				.then(axios.spread((...responses) => {
+
+					var response_member = responses[0];
+					var response_organization = responses[1];
+				
+					let members = extractMembersByCountry(response_member.data, country_name);
+					vm.members = members;
+
+					let base_orgs = getBaseOrganizationByCountry(response_organization.data, country_name);
+					let coop_orgs = getCooperateOrganizationsByCountry(response_organization.data, country_name);
+
+					vm.base_orgs = base_orgs;
+					vm.coop_orgs = coop_orgs;
+
+					}))
+					.catch(err => {
+						vm.errored = true,
+							vm.error = err
+					})
+					.finally(() => vm.loading = false)
+			},
+			updated() {
+
+			},
+			methods: {
+
+			}
+		})
+	</script>
+
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

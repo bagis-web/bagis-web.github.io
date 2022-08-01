@@ -1,1 +1,234 @@
+<!DOCTYPE HTML>
+<!--
+	Cube by FreeHTML5.co
+	Twitter: http://twitter.com/gettemplateco
+	URL: http://freehtml5.co
+-->
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>グローバル感性イメージング科学技術​のアジア拠点形成​</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="Hiroyuki Kubo" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="node_modules/bootstrap/scss/bootstrap.css">
+
+	<!-- Vue.js -->
+	<script src="node_modules/vue/dist/vue.min.js"></script>
+	<script src="node_modules/axios/dist/axios.min.js"></script>
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
+	<!-- Font Awesome -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+	<!-- Theme style  -->
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+
+</head>
+<body>
+		
+	<div class="gtco-loader"></div>
+	
+	<div id="page">
+		<div id="navi"></div>
+
+		<header id="gtco-header" class="gtco-cover" role="banner">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-0 text-left">
+						<div class="display-t">
+							<div class="display-tc">
+								<div class="row">
+									<div class="col-md-5 text-center header-img animate-box">
+										<img src="images/logo-top.png"/>
+									</div>
+									<div class="col-md-7 copy animate-box">
+										<h1>グローバル感性イメージング科学技術​のアジア拠点形成​</h1>
+										<h3>Formation of a Strategic Base in Asia Creating and Developing of Global Minded Imaging Science​</h3>								
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- END #gtco-header -->
+
+		<div id="about" class="gtco-section gtco-testimonial">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-8 offset-md-2 gtco-heading text-center information">
+						<h2>お知らせ</h2>
+						<div id="app" style="width: 100%;">
+							<p v-if="errored" v-cloak>{{ error }}</p>
+							<p v-if="loading" v-cloak>Loading...</p>
+							<div v-else>
+								<table class="table table-borderless text-left">
+									<tr v-for="entry in entries">
+										<th style="text-align:right;">{{entry.date_str}}</th>
+										<td>
+											<span class="badge badge-default">{{entry.type}}</span>
+											{{entry.text_jp}}
+											<a v-if="entry.url_jp!=''" v-bind:href="'events-jp.html#' + entry.id">
+												<i class="fa fa-arrow-right" aria-hidden="true"></i>
+											</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- Footer -->
+	<div id="footer"></div>
+	</div>
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+	<!-- mymain.js -->
+	<script src="js/mymain.js"></script>
+	<!-- Vue -->
+	<script>
+		var path = 'https://sheets.googleapis.com/v4/spreadsheets/1SYu5UZr_7FA3T0HbC1k8T4SZRBoG1DkTufiZPs6kyWA/values/sheet1?key=AIzaSyDLaaPfcDOTmc1RhziA8Q7xpP8P8Os2rIo';
+
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					loading: true,
+					errored: false,
+					error: null,
+					entries: null,
+				}
+			},
+			created() {
+				let vm = this
+				axios.get(path)
+					.then(response => {
+
+						var entries = [];
+
+						response.data.values.forEach(function(value){
+
+							var entry = {
+								date:null,
+								type:null,
+								text_jp:null,
+								text_en:null,
+								url_jp:null,
+								url_en:null,
+								date_str:null,
+							};
+							
+							// コメント行の読み飛ばし
+							if (value[0].startsWith('#')) return;
+							else if(value[0].toLowerCase()!='true') return;
+
+							entry.date = new Date(value[1]);
+							entry.type = value[2];
+							entry.text_jp = value[3];
+							entry.text_en = value[4];
+							entry.url_jp  = value[5];
+							entry.url_en  = value[6];
+
+							entry.date_str = getYYYYmmdd(entry.date);
+
+							entries.push(entry)
+						});
+
+						// 日付でソート
+						entries.sort(function (a, b) {
+							if (a.date > b.date) return 1;
+							if (a.date < b.date) return -1;
+							return 0;
+						});
+
+						vm.entries = entries;
+
+
+					})
+					.catch(err => {
+						vm.errored = true,
+							vm.error = err
+					})
+					.finally(() => vm.loading = false)
+			},
+			updated() {
+
+			},
+			methods: {
+			}
+		})
+
+
+	</script>
+
+
+	</body>
+</html>
 
