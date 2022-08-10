@@ -97,21 +97,20 @@
 						<div class="row">
 							<div class="col-md-12 offset-md-0 gtco-heading text-center">
 								<h3>拠点機関</h3>
-								<table class="table table-borderless">
+								<table class="table table-borderless organizations">
 									<tr v-for="entry in base_orgs">
 										<td>
 											<a v-bind:href="entry.url" target="_blank\">{{entry.name_jp}}</a>
 										</td>
 									</tr>
 								</table>
-
 							</div>
 						</div>
 						<div v-if="coop_orgs.length!=0">
 							<div class="row">
 								<div class="col-md-12 offset-md-0 gtco-heading text-center">
 									<h3>協力機関</h3>
-									<table class="table table-borderless">
+									<table class="table table-borderless organizations">
 										<tr v-for="entry in coop_orgs">
 											<td>
 												<a v-bind:href="entry.url" target="_blank\">{{entry.name_jp}}</a>

@@ -17,6 +17,10 @@ $padding-base-vertical: 14px;
 
 $brand-primary: #82dfad;
 $brand-secondary:#eeea80; 
+$brand-hyperlink: darken($brand-primary, 40%);
+// $brand-primary: #34e9ef;
+// $brand-secondary:#c692f3; 
+
 $brand-special: #352812;
 
 $brand-white: #fff;
@@ -149,7 +153,7 @@ body {
 	}
 }
 a {
-	color: $brand-primary;
+	color: $brand-hyperlink;
 	@include transition(.5s);
 	&:hover, &:active, &:focus {
 		color: $brand-primary;
@@ -1962,3 +1966,26 @@ form {
 	}
 }
 
+.jspslogo
+{
+
+	img{
+		filter:invert(100%);
+	};
+}
+
+.c2clogo
+{
+	img{
+		width: auto !important;
+		border-radius: 10px;
+		filter: drop-shadow(10px 10px 4px darken(mix($brand-primary, $brand-secondary), 30%));
+	}
+}
+
+.organizations
+{
+
+	font-size: larger;
+	font-weight: 800;
+}

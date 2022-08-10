@@ -46,7 +46,7 @@ body {
 }
 
 a {
-  color: #82dfad;
+  color: #1e7747;
   transition: 0.5s;
 }
 a:hover, a:active, a:focus {
@@ -1786,4 +1786,19 @@ form label.error {
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
+}
+
+.jspslogo img {
+  filter: invert(100%);
+}
+
+.c2clogo img {
+  width: auto !important;
+  border-radius: 10px;
+  filter: drop-shadow(10px 10px 4px #67b62d);
+}
+
+.organizations {
+  font-size: larger;
+  font-weight: 800;
 }/*# sourceMappingURL=style.css.map */
