@@ -90,7 +90,7 @@
 
 		<div class="gtco-section gtco-testimonial gtco-gray">
 			<div class="gtco-container">
-				<div id="app">
+				<div id="app" class="member">
 					<p v-if="errored" v-cloak>{{ error }}</p>
 					<p v-if="loading" v-cloak>Loading...</p>
 					<div v-else>
@@ -98,7 +98,7 @@
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h2>コーディネーター</h2>
 								<div class="row">
-									<div v-for="entry in coordinator" class="col-md-10 col-10 col-md-offset-1">
+									<div v-for="entry in coordinator" class="col-md-10 col-md-offset-1">
 										<div class="card committee">
 											<div class="row">
 												<div class="col-md-4 col-m1">
