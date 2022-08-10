@@ -691,7 +691,7 @@ form label {
   #gtco-header .display-tc h1,
 #gtco-counter .display-tc h1,
 .gtco-cover .display-tc h1 {
-    font-size: 34px;
+    font-size: 24px;
     line-height: 1.2;
     margin-bottom: 10px;
   }
@@ -701,6 +701,19 @@ form label {
 .gtco-cover .display-tc h2 {
   font-size: 18px;
   margin-bottom: 0px;
+}
+#gtco-header .display-tc h3,
+#gtco-counter .display-tc h3,
+.gtco-cover .display-tc h3 {
+  font-size: 28px;
+  font-style: italic;
+}
+@media screen and (max-width: 768px) {
+  #gtco-header .display-tc h3,
+#gtco-counter .display-tc h3,
+.gtco-cover .display-tc h3 {
+    font-size: 20px;
+  }
 }
 #gtco-header .display-tc img,
 #gtco-counter .display-tc img,
