@@ -1801,4 +1801,8 @@ form label.error {
 .organizations {
   font-size: larger;
   font-weight: 800;
+}
+
+.activity-body {
+  text-align: justify !important;
 }/*# sourceMappingURL=style.css.map */

@@ -58,7 +58,10 @@
 		<!--[if lt IE 9]>
 		<script src="js/respond.min.js"></script>
 		<![endif]-->
-	
+		
+		<!-- Font Awesome -->
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 	
 	</head>
 
@@ -97,13 +100,20 @@
 						<div v-for="entry in entries" class="row">
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h3>{{entry.title}}</h3>
-								<div class="date text-right">{{entry.date_text}}</div>
+								<div class="date text-right"><i class="far fa-calendar"></i>{{entry.date_text}}</div>
 								<div class="row">
-									<div class="col-md-4 offset-md-0 gtco-heading text-center">
-										<img v-bind:src="entry.image_url" class="img-fluid"/>
+									<div v-if="entry.image_url!=null">
+										<div class="col-md-4 offset-md-0 gtco-heading text-center">
+											<img v-bind:src="entry.image_url" class="img-fluid"/>
+										</div>
+										<div class="col-md-8 offset-md-0 gtco-heading text-left activity-body">
+											<p>{{entry.body}}</p>
+										</div>	
 									</div>
-									<div class="col-md-8 offset-md-0 gtco-heading text-left">
-										<p>{{entry.body}}</p>
+									<div v-else>
+										<div class="col-md-12 offset-md-0 gtco-heading text-left activity-body">
+											<p>{{entry.body}}</p>
+										</div>	
 									</div>
 								</div>
 								
