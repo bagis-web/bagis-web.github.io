@@ -120,7 +120,7 @@
 											<span class="badge badge-default">{{entry.type}}</span>
 											{{entry.text_jp}}
 											<a v-if="entry.url_jp!=''" v-bind:href="'events-jp.html#' + entry.id">
-												<i class="fa fa-arrow-right" aria-hidden="true"></i>
+												<i class="fas fa-link" aria-hidden="true"></i>リンク
 											</a>
 										</td>
 									</tr>
@@ -212,8 +212,8 @@
 
 						// 日付でソート
 						entries.sort(function (a, b) {
-							if (a.date > b.date) return 1;
-							if (a.date < b.date) return -1;
+							if (a.date < b.date) return 1;
+							if (a.date > b.date) return -1;
 							return 0;
 						});
 
