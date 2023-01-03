@@ -48,7 +48,10 @@
 		<!-- Owl Carousel  -->
 		<link rel="stylesheet" href="css/owl.carousel.min.css">
 		<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	
+
+		<!-- Font Awesome -->
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 		<!-- Theme style  -->
 		<link rel="stylesheet" href="css/style.css">
 	
@@ -97,6 +100,21 @@
 						<div class="row">
 							<div class="col-md-8 offset-md-2 gtco-heading text-center">
 								<h2>受賞</h2>
+								<div v-if="award_entries.length == 0">(To appear.)</div>
+								<div v-else>
+									<div class="col-md-12 offset-md-0 text-left">
+										<dl class="dl awards" v-for="entry in award_entries">
+											<dt><i class="fas fa-star"></i> {{entry.award_organization + ' ' + entry.award_title}}</dt>
+											<dd>受賞者: {{entry.award_winner}}</dd>
+											<dd>受賞日: {{entry.award_date}}</dd>
+											<dd>対象論文:{{entry.award_target}}</dd>
+											<template v-if="entry.url != undefined">
+												
+												<dd><a v-bind:href="entry.url"><i class="fas fa-link"></i>リンク</a></dd>
+											</template>
+										</dl>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -213,6 +231,7 @@
 
 						var entries = [];
 
+						var award_entries = [];
 						var journal_entries = [];
 						var intproc_entries = [];
 						var domproc_entries = [];
@@ -220,6 +239,7 @@
 
 						response.data.values.forEach(function(value){
 							var Types = {
+								award : 0,
 								journal : 1,
 								int_proc : 2,
 								dom_proc : 3,
@@ -239,15 +259,24 @@
 								co_philippines:null,
 								co_indonesia:null,								
 								url:null,
+
+								award_target:null,
+								award_date:null,
+								award_organization:null,
+								award_title:null,
+								award_winner:null,
 							};
 							// コメント行の読み飛ばし
 							if(value.length == 0) return;
 							else if (value[0].startsWith('#')) return;
-							else if(value[1].toLowerCase()!='true') return;
+							else if (value[1].toLowerCase()!='true') return;
 
 							var idx = 2;
 							switch(value[idx++])
 							{
+								case '表彰':
+									entry.type = Types.award;
+									break;
 								case '学術雑誌':
 									entry.type = Types.journal;
 									break;
@@ -261,45 +290,57 @@
 									entry.type = Types.others;
 									break;
 							}
-							entry.bibtext = value[idx++];
-							if(value[idx++] == '有')
+							if(entry.type == Types.award)
 							{
-								entry.reviewed = true;
+								entry.award_target = value[idx++];
+								entry.award_date = value[idx++];
+								entry.award_organization = value[idx++];
+								entry.award_title = value[idx++];
+								entry.award_winner = value[idx++];
+								entry.url = value[idx++];
 							}
-							else entry.reviewed = false;
+							else {
+								entry.bibtext = value[idx++];
+								if(value[idx++] == '有')
+								{
+									entry.reviewed = true;
+								}
+								else entry.reviewed = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.inc_gradstudent = true;
-							else entry.inc_gradstudent = false;
+								if(value[idx++].toLowerCase()!='true') entry.inc_gradstudent = true;
+								else entry.inc_gradstudent = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.inc_phds = true;
-							else entry.inc_phds = false;
+								if(value[idx++].toLowerCase()!='true') entry.inc_phds = true;
+								else entry.inc_phds = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_thailand = true;
-							else entry.co_thailand = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_thailand = true;
+								else entry.co_thailand = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_turkey = true;
-							else entry.co_turkey = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_turkey = true;
+								else entry.co_turkey = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_malaysia = true;
-							else entry.co_malaysia = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_malaysia = true;
+								else entry.co_malaysia = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_vietnam = true;
-							else entry.co_vietnam = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_vietnam = true;
+								else entry.co_vietnam = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_cambodia= true;
-							else entry.co_cambodia = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_cambodia= true;
+								else entry.co_cambodia = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_philippines = true;
-							else entry.co_philippines = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_philippines = true;
+								else entry.co_philippines = false;
 
-							if(value[idx++].toLowerCase()!='true') entry.co_indonesia = true;
-							else entry.co_indonesia = false;
+								if(value[idx++].toLowerCase()!='true') entry.co_indonesia = true;
+								else entry.co_indonesia = false;
 
-							entry.url = value[idx++];
+								entry.url = value[idx++];
+							}
 
 							entries.push(entry);
 
-							if(entry.type == Types.journal) journal_entries.push(entry);
+							if(entry.type == Types.award) award_entries.push(entry);
+							else if(entry.type == Types.journal) journal_entries.push(entry);
 							else if(entry.type == Types.int_proc) intproc_entries.push(entry);
 							else if(entry.type == Types.dom_proc) domproc_entries.push(entry);
 							else other_entries.push(entry);
@@ -310,6 +351,7 @@
 
 						vm.entries = entries;
 
+						vm.award_entries   = award_entries;
 						vm.journal_entries = journal_entries;
 						vm.intproc_entries = intproc_entries;
 						vm.domproc_entries = domproc_entries;
