@@ -119,7 +119,7 @@
 										<td>
 											<span class="badge badge-default">{{entry.type}}</span>
 											{{entry.text_jp}}
-											<a v-if="entry.url_jp!=''" v-bind:href="'events-jp.html#' + entry.id">
+											<a v-if="entry.url_jp!=''" v-bind:href="entry.url_jp">
 												<i class="fas fa-link" aria-hidden="true"></i>リンク
 											</a>
 										</td>
