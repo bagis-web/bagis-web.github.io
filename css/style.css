@@ -319,7 +319,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) {
   .gtco-cover .display-t,
-.gtco-cover .display-tc {
+  .gtco-cover .display-tc {
     height: 600px;
     height: inherit !important;
     padding: 3em 0;
@@ -342,7 +342,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) {
   .gtco-cover.gtco-cover-sm .display-t,
-.gtco-cover.gtco-cover-sm .display-tc {
+  .gtco-cover.gtco-cover-sm .display-tc {
     height: 400px;
     height: inherit !important;
     padding: 3em 0;
@@ -365,7 +365,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) {
   .gtco-cover.gtco-cover-xs .display-t,
-.gtco-cover.gtco-cover-xs .display-tc {
+  .gtco-cover.gtco-cover-xs .display-tc {
     padding: 3em 0;
     height: inherit !important;
   }
@@ -689,8 +689,8 @@ form label {
 }
 @media screen and (max-width: 768px) {
   #gtco-header .display-tc h1,
-#gtco-counter .display-tc h1,
-.gtco-cover .display-tc h1 {
+  #gtco-counter .display-tc h1,
+  .gtco-cover .display-tc h1 {
     font-size: 24px;
     line-height: 1.2;
     margin-bottom: 10px;
@@ -710,8 +710,8 @@ form label {
 }
 @media screen and (max-width: 768px) {
   #gtco-header .display-tc h3,
-#gtco-counter .display-tc h3,
-.gtco-cover .display-tc h3 {
+  #gtco-counter .display-tc h3,
+  .gtco-cover .display-tc h3 {
     font-size: 20px;
   }
 }
@@ -1557,7 +1557,7 @@ form label {
 }
 @media screen and (max-width: 992px) {
   .owl-carousel .owl-controls .owl-nav .owl-next,
-.owl-carousel-posts .owl-controls .owl-nav .owl-next {
+  .owl-carousel-posts .owl-controls .owl-nav .owl-next {
     right: -50px;
   }
 }
@@ -1567,7 +1567,7 @@ form label {
 }
 @media screen and (max-width: 992px) {
   .owl-carousel .owl-controls .owl-nav .owl-prev,
-.owl-carousel-posts .owl-controls .owl-nav .owl-prev {
+  .owl-carousel-posts .owl-controls .owl-nav .owl-prev {
     left: -50px;
   }
 }
@@ -1822,4 +1822,9 @@ form label.error {
 
 .member h2 {
   font-size: 28px;
+}
+
+.rescheduled {
+  color: #dc0c0c;
+  font-weight: bolder;
 }/*# sourceMappingURL=style.css.map */

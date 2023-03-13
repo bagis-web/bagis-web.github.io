@@ -22,7 +22,7 @@ $brand-hyperlink: darken($brand-primary, 40%);
 // $brand-secondary:#c692f3; 
 
 $brand-special: #352812;
-
+$brand-strong: #dc0c0c;
 $brand-white: #fff;
 $brand-black: #333;
 $brand-darker: #888;
@@ -2007,4 +2007,9 @@ form {
 	h2{
 		font-size: 28px;
 	}
+}
+.rescheduled
+{
+	color: $brand-strong;
+	font-weight: bolder;
 }
