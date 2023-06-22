@@ -1849,4 +1849,13 @@ form label.error {
 .googleMap iframe {
   width: 100%;
   aspect-ratio: 16/9;
+}
+
+.session-chair {
+  font-style: italic;
+  color: #888;
+}
+
+.session-chair:before {
+  content: "Chair: ";
 }/*# sourceMappingURL=style.css.map */

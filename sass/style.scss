@@ -2035,3 +2035,12 @@ form {
 	}
 	margin-bottom: 40px;
 }
+.session-chair
+{
+	font-style: italic;
+	color:$brand-darker;
+}
+.session-chair:before
+{
+	content: "Chair: ";
+}
