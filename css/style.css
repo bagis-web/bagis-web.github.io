@@ -1827,4 +1827,26 @@ form label.error {
 .rescheduled {
   color: #dc0c0c;
   font-weight: bolder;
+}
+
+.pid {
+  color: #fff;
+  background-color: #82dfad;
+}
+
+.pg-author {
+  font-style: italic;
+  color: #888;
+}
+
+.session-title {
+  font-weight: bold;
+}
+
+.googleMap {
+  margin-bottom: 40px;
+}
+.googleMap iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
 }/*# sourceMappingURL=style.css.map */
